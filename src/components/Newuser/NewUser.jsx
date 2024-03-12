@@ -10,7 +10,7 @@ export default function NewUser () {
 
     const makeAdmnoList = async () => {
         const mobile = mob.current.value;
-        const response = await fetch('http://localhost:8081/studentList');
+        const response = await fetch('/.netlify/functions/server/studentList');
         const result = await response.json();
         const list = []
         result.map((each) => {

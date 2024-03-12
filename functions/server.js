@@ -1,7 +1,17 @@
 import express from 'express';
 import cors from 'cors';
-import connection from '../../../db.js';
+import Serverless from 'serverless-http';
 
+import { createConnection } from "mysql2";
+
+const connection = createConnection({
+    host: "89.117.188.154",
+    user: "u932299896_eduware",
+    password: "Webgen@220310",
+    database: "u932299896_sisdb",
+})
+
+const router = express.Router();
 
 const app = express();
 // app.use(express.static('dist'));
@@ -12,21 +22,21 @@ setInterval(() => {
     connection.query(`select 1`);
 }, 10000)
 
-app.get('/loginDetails', (request, response) => {
+router.get('/loginDetails', (request, response) => {
     const queryString = `SELECT * FROM tbl_stdLogin`;
     connection.query(queryString, (error, result) => {
         return response.json(result)
     })
 })
 
-app.get('/studentList', (request, response) => {
+router.get('/studentList', (request, response) => {
     const queryString = `SELECT * FROM tbl_admission where session = "2023-2024" AND active = 1`;
     connection.query(queryString, (error, result) => {
         return response.json(result)
     })
 })
 
-app.post('/getQuery', (request, response) => {
+router.post('/getQuery', (request, response) => {
 
     const dataFromBody = [request.body.admno, request.body.userID, request.body.PIN];
 
@@ -35,7 +45,7 @@ app.post('/getQuery', (request, response) => {
 
 });
 
-app.post('/updateName', (request, response) => {
+router.post('/updateName', (request, response) => {
 
     const dataFromBody = [request.body.name, request.body.admno];
 
@@ -44,7 +54,7 @@ app.post('/updateName', (request, response) => {
 
 });
 
-app.post('/updatefName', (request, response) => {
+router.post('/updatefName', (request, response) => {
 
     const dataFromBody = [request.body.fname, request.body.admno];
 
@@ -54,23 +64,26 @@ app.post('/updatefName', (request, response) => {
 });
 
 
-app.get('/transportFee', (request, response) => {
+router.get('/transportFee', (request, response) => {
     const queryString = `select admno, transportfee from tbl_stdfeemaster where session = '2023-2024'`
     connection.query(queryString, (error, result) => {
         return response.json(result)
     })
 })
 
-app.get('/destination', (request, response) => {
+router.get('/destination', (request, response) => {
     const queryString = `select admno, destination from tbl_stdtransdetail`;
     connection.query(queryString, (error, result) => {
         return response.json(result)
     })
 })
 
-app.listen(8081, () => {
-    console.log(`serve at http://localhost:8081`);
-})
+app.use(`/.netlify/functions/server`, router)
+module.exports = app;
+module.exports.handler = Serverless(app);
+// app.listen(8081, () => {
+//     console.log(`serve at http://localhost:8081`);
+// })
 
 
 // /loginDetails

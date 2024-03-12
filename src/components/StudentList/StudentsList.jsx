@@ -13,7 +13,7 @@ function StudentsList () {
 
     const getStdData = async () => {
         const mob = getMobileNo();
-        const response = await fetch('http://localhost:8081/studentList')
+        const response = await fetch('/.netlify/functions/server/studentList')
         const result = await response.json();
         const details = [];
         result.forEach(each => {
@@ -27,7 +27,7 @@ function StudentsList () {
 
     const getStaus = async () => {
         const mob = getMobileNo();
-        const response = await fetch('http://localhost:8081/loginDetails')
+        const response = await fetch('/.netlify/functions/server/loginDetails')
         const result = await response.json();
         const statusValue = [];
         result.forEach(each => {

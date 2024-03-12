@@ -24,7 +24,7 @@ export default function Profile() {
 
     const getStdData = async () => {
         const admno = getAdmno();
-        const response = await fetch('http://localhost:8081/studentList')
+        const response = await fetch('/.netlify/functions/server/studentList')
         const result = await response.json();
         result.forEach(each => {
             if (each.admno === admno) {
@@ -42,7 +42,7 @@ export default function Profile() {
 
         const getTransFee = async () => {
             const admno = getAdmno();
-            const response = await fetch('http://localhost:8081/transportFee');
+            const response = await fetch('/.netlify/functions/server/transportFee');
             const result = await response.json();
             for (let i = 0; i < result.length; i++) {
                 if (result[i].admno === admno) {
@@ -54,7 +54,7 @@ export default function Profile() {
 
         const getDestValue = async () => {
             const admno = getAdmno();
-            const response = await fetch('http://localhost:8081/destination');
+            const response = await fetch('/.netlify/functions/server/destination');
             const result = await response.json();
             for (let i = 0; i < result.length; i++) {
                 if (result[i].admno === admno) {

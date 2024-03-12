@@ -27,7 +27,7 @@ export default function createNewUser () {
             userID: userID,
             PIN: PIN
         };
-        fetch('http://89.117.188.154:8081/getQuery', {
+        fetch('/.netlify/functions/server/getQuery', {
             method: 'POST',                           //|
             headers: {                                //|  
                 'Content-Type': 'application/json',     //| (request body to send to the server)
