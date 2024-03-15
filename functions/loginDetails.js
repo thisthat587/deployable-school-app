@@ -1,38 +1,45 @@
-// loginDetails.js
+import { createConnection } from 'mysql2';
 
-// Import the necessary modules or mechanisms for database connection
-import connection from '../db.js';
-
-// Define the handler function for the Netlify function
-export async function handler(event, context) {
+export const handler = async (event, context) => {
     try {
-        // Construct the SQL query to fetch login details
-        const queryString = `SELECT * FROM tbl_stdLogin`;
-
-        // Execute the query
-        const result = await new Promise((resolve, reject) => {
-            connection.query(queryString, (error, rows) => {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve(rows);
-                }
-            });
+        // Create a database connection
+        const connection = createConnection({
+            host: "89.117.188.154",
+            user: "u932299896_eduware",
+            password: "Webgen@220310",
+            database: "u932299896_sisdb",
         });
 
-        // Ensure the result is an array
-        const data = Array.isArray(result) ? result : [];
+        // Connect to the database
+        await connection.connect();
 
-        // Return the result as a JSON response
+        // Execute a database query
+        const [rows] = await connection.promise().query('SELECT * FROM tbl_stdLogin');
+
+        // Close the database connection
+        connection.end();
+
+        // Construct the response body
+        const responseBody = {
+            message: rows,
+            event,
+            context
+        };
+
+        // Return the response
         return {
             statusCode: 200,
-            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(responseBody)
         };
     } catch (error) {
-        // Handle any errors that occur during execution
+        // Handle any errors
+        console.error('Error:', error);
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: 'Internal Server Error' }),
+            body: JSON.stringify({ error: 'Internal Server Error' })
         };
     }
-}
+};
