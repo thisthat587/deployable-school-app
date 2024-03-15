@@ -1,4 +1,3 @@
-// studentList.js
 
 import connection from '../../../db.js';
 
