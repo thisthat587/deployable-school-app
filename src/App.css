@@ -1,0 +1,18 @@
+/* styles.css or Tailwind CSS configuration */
+.input-field {
+    @apply w-full rounded-lg py-2 px-4 text-xl text-center;
+}
+
+.button {
+    @apply mt-4 w-36 ml-8 rounded-lg bg-blue-500 py-2 text-lg font-semibold text-white shadow-sm hover:bg-blue-400 focus:outline-none focus-visible:outline-offset-2 focus-visible:outline-black;
+}
+
+@media (min-width: 768px) {
+    .input-field {
+        @apply text-2xl;
+    }
+
+    .button {
+        @apply w-36 ml-4;
+    }
+}

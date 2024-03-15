@@ -20,8 +20,8 @@ export default function LoginPage() {
     })
 
     return (
-        <div className="flex items-center justify-center bg-white m-44 rounded-lg ">
-            <div className='p-16'>
+        <div className="flex items-center justify-center bg-white mt-32 rounded-lg ">
+            <div className='p-2'>
                 <div className="mb-2">
                     <svg
                         width="50"
