@@ -15,7 +15,7 @@ export const handler = async (event, context) => {
 
         // Execute a database query
         const [rows] = await connection.promise().query('SELECT * FROM tbl_stdLogin');
-
+        // console.log(rows)
         // Close the database connection
         connection.end();
 

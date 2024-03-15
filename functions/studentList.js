@@ -1,5 +1,5 @@
+import { createConnection } from 'mysql2'
 
-import { createConnection } from 'mysql2';
 
 export const handler = async (event, context) => {
     try {
@@ -19,6 +19,9 @@ export const handler = async (event, context) => {
 
         // Close the database connection
         connection.end();
+
+        // Ensure that rows is always an array
+        // const data = Array.isArray(rows) ? rows : [];
 
         // Construct the response body
         const responseBody = {
@@ -44,3 +47,5 @@ export const handler = async (event, context) => {
         };
     }
 };
+
+// export { handler };

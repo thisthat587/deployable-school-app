@@ -18,7 +18,7 @@ export default function Dashboard() {
             const result = await response.json();
             setAdmno(getAdmno());
 
-            result.forEach(each => {
+            result.message.forEach(each => {
                 if (each.admno === admno) {
                     setData(each);
                     setIsLoading(false);
