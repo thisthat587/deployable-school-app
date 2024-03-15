@@ -1,8 +1,8 @@
 import React from "react"
 import { useRef } from "react"
 
-import { NavLink } from "react-router-dom"
-import { setAdmnoList, setMobileNo } from "../../../global";
+import { NavLink } from "react-router-dom"  
+import { setAdmnoList, setMobileNo } from "../../../global.js";
 
 export default function NewUser () {
 
@@ -10,10 +10,10 @@ export default function NewUser () {
 
     const makeAdmnoList = async () => {
         const mobile = mob.current.value;
-        const response = await fetch('/.netlify/functions/server/studentList');
+        const response = await fetch('/api/studentList');
         const result = await response.json();
         const list = []
-        result.map((each) => {
+        result.message.map((each) => {
             if (each.fmob === mobile) {
                 list.push(each.admno);
             }

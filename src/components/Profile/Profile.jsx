@@ -24,9 +24,9 @@ export default function Profile() {
 
     const getStdData = async () => {
         const admno = getAdmno();
-        const response = await fetch('/.netlify/functions/server/studentList')
+        const response = await fetch('/api/studentList')
         const result = await response.json();
-        result.forEach(each => {
+        result.message.forEach(each => {
             if (each.admno === admno) {
                 setData(each);
 
@@ -42,27 +42,39 @@ export default function Profile() {
 
         const getTransFee = async () => {
             const admno = getAdmno();
-            const response = await fetch('/.netlify/functions/server/transportFee');
+            const response = await fetch('/api/transportFee');
             const result = await response.json();
-            for (let i = 0; i < result.length; i++) {
-                if (result[i].admno === admno) {
-                    setTransFee(result[i].transportfee);
+            // for (let i = 0; i < result.message.length; i++) {
+            //     if (result.message[i].admno === admno) {
+            //         setTransFee(result[i].transportfee);
+            //         return;
+            //     }
+            // }
+            result.message.forEach((each) => {
+                if (each.admno === admno) {
+                    setTransFee(each.transportfee);
                     return;
                 }
-            }
+            })
         }
 
         const getDestValue = async () => {
             const admno = getAdmno();
-            const response = await fetch('/.netlify/functions/server/destination');
+            const response = await fetch('/api/destination');
             const result = await response.json();
-            for (let i = 0; i < result.length; i++) {
-                if (result[i].admno === admno) {
-                    setDest(result[i].destination);
+            // for (let i = 0; i < result.message.length; i++) {
+            //     if (result.message[i].admno === admno) {
+            //         setDest(result[i].destination);
 
+            //         return;
+            //     }
+            // }
+            result.message.forEach((each) => {
+                if (each.admno === admno) {
+                    setDest(each.destination);
                     return;
                 }
-            }
+            })
         }
 
         getDestValue();
@@ -82,7 +94,7 @@ export default function Profile() {
             admno: data.admno
         };
 
-        fetch('http://localhost:8081/updateName', {
+        fetch('api/updateName', {
             method: 'POST',                           //|
             headers: {                                //|  
                 'Content-Type': 'application/json',     //| (request body to send to the server)
@@ -110,7 +122,7 @@ export default function Profile() {
             fname: stdfName,
             admno: data.admno,
         };
-        fetch('http://localhost:8081/updatefName', {
+        fetch('api/updatefName', {
             method: 'POST',                           //|
             headers: {                                //|  
                 'Content-Type': 'application/json',     //| (request body to send to the server)

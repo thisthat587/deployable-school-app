@@ -13,10 +13,10 @@ function StudentsList () {
 
     const getStdData = async () => {
         const mob = getMobileNo();
-        const response = await fetch('/.netlify/functions/server/studentList')
+        const response = await fetch('/api/studentList')
         const result = await response.json();
         const details = [];
-        result.forEach(each => {
+        result.message.forEach(each => {
             if (each.fmob === mob) {
                 details.push(each);
             }
@@ -27,10 +27,10 @@ function StudentsList () {
 
     const getStaus = async () => {
         const mob = getMobileNo();
-        const response = await fetch('/.netlify/functions/server/loginDetails')
+        const response = await fetch('/api/loginDetails')
         const result = await response.json();
         const statusValue = [];
-        result.forEach(each => {
+        result.message.forEach(each => {
             if (each.uid === mob) {
                 statusValue.push({ admno: each.admno, status: each.status });
             }
