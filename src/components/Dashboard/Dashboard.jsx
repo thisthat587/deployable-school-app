@@ -14,7 +14,7 @@ export default function Dashboard() {
 
     const getStdData = async () => {
         try {
-            const response = await fetch('/.netlify/functions/server/studentList');
+            const response = await fetch('/api/studentList');
             const result = await response.json();
             setAdmno(getAdmno());
 
