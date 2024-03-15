@@ -11,19 +11,22 @@ export async function handler(event, context) {
 
         // Execute the query
         const result = await new Promise((resolve, reject) => {
-            connection.query(queryString, (error, result) => {
+            connection.query(queryString, (error, rows) => {
                 if (error) {
                     reject(error);
                 } else {
-                    resolve(result);
+                    resolve(rows);
                 }
             });
         });
 
+        // Ensure the result is an array
+        const data = Array.isArray(result) ? result : [];
+
         // Return the result as a JSON response
         return {
             statusCode: 200,
-            body: JSON.stringify(result),
+            body: JSON.stringify(data),
         };
     } catch (error) {
         // Handle any errors that occur during execution
