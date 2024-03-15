@@ -1,5 +1,5 @@
 
-import connection from '../../../db.js';
+import connection from '../db.js';
 
 export async function handler(event, context) {
     try {

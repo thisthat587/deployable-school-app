@@ -1,7 +1,7 @@
 // loginDetails.js
 
 // Import the necessary modules or mechanisms for database connection
-import connection from '../../../db.js';
+import connection from '../db.js';
 
 // Define the handler function for the Netlify function
 export async function handler(event, context) {
