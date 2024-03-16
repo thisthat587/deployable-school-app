@@ -156,9 +156,9 @@ export default function Profile() {
                 <div className="w-full md:max-w-[700px] md:mx-auto">
                     <div className="w-full bg-blue-600 text-white font-bold text-2xl text-center py-4 md:py-6">PROFILE</div>
                     <div className="flex flex-col items-center justify-center mt-4">
-                        <div className="w-full md:w-[80%] lg:w-[60%] xl:w-[50%]">
+                        {/* <div className="w-full md:w-[80%] lg:w-[60%] xl:w-[50%]"> */}
                             <ProfilePhotoInput />
-                        </div>
+                        {/* </div> */}
                     </div>
                     <div className="w-full">
                         <table className="w-full">
