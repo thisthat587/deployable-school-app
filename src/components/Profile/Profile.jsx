@@ -148,130 +148,127 @@ export default function Profile() {
     return (
 
         <div>
-            {isLoading ? (<div className="flex items-center justify-center mt-96">
-                <div className="border-t-8 border-blue-500 border-solid rounded-full animate-spin h-24 w-24"></div>
+            {isLoading ? (<div className="flex items-center justify-center mt-20 md:mt-40 lg:mt-64 xl:mt-96">
+                <div className="border-t-8 border-blue-500 border-solid rounded-full animate-spin h-16 md:h-20 lg:h-24 w-16 md:w-20 lg:w-24"></div>
             </div>
+
             ) : (
-                <div className="w-full md:max-w-[700px] md:mx-auto mb-4 md:mb-0 ">
-                    <div className="w-full md:max-w-[700px] mb-auto mx-auto ">
-                        <div className="w-full md:max-w-[700px] mx-auto">
-                            <h1 className="text-2xl text-center w-full bg-blue-600 text-white font-bold mt-2 px-4 py-2 md:py-4 lg:py-6">PROFILE</h1>
-                            <div className="w-full md:w-[80%] lg:w-[60%] xl:w-[50%] mx-auto mt-4">
-                                <ProfilePhotoInput />
-                            </div>
+                <div className="w-full md:max-w-[700px] md:mx-auto">
+                    <div className="w-full bg-blue-600 text-white font-bold text-2xl text-center py-4 md:py-6">PROFILE</div>
+                    <div className="flex flex-col items-center justify-center mt-4">
+                        <div className="w-full md:w-[80%] lg:w-[60%] xl:w-[50%]">
+                            <ProfilePhotoInput />
                         </div>
-
-
-                        <div className="w-full md:max-w-[700px] mb-auto mx-auto ">
-                            <div className="w-full md:max-w-[700px] mx-auto">
-                                <table className='w-full md:w-auto'>
-                                    <tbody>
-                                        <tr>
-                                            <td className='w-full md:w-[30%] border px-4 md:px-10'>
-                                                <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="name">Name</label>
-                                            </td>
-                                            {isNameEditable ? (
-                                                <td className='w-full md:w-[40%] border px-4 md:px-10'>
-                                                    <input
-                                                        className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center'
-                                                        id="name"
-                                                        type="text"
-                                                        ref={name}
-                                                        value={data.name}
-                                                        onChange={(e) => setData({ ...data, name: e.target.value })}
-                                                    />
-                                                </td>
-                                            ) : (
-                                                <td className='w-full md:w-[40%] border px-4 md:px-10'>
-                                                    <input
-                                                        className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center'
-                                                        ref={name}
-                                                        id="name"
-                                                        type="text"
-                                                        value={data.name}
-                                                        readOnly
-                                                    />
-                                                </td>
-                                            )}
-                                            {isNameEditable ? (
-                                                <td className='w-full md:w-[30%] px-2 border'>
-                                                    <Check
-                                                        className='hover:bg-blue-400 bg-blue-500 rounded-lg size-8 text-white'
-                                                        style={{ padding: '4px' }}
-                                                        onClick={changeName}
-                                                    />
-                                                </td>
-                                            ) : (
-                                                <td className='w-full md:w-[30%] px-2 border'>
-                                                    <Edit2Icon
-                                                        className='hover:bg-blue-400 bg-blue-500 rounded-lg size-8 text-white'
-                                                        style={{ padding: '4px' }}
-                                                        onClick={changeName}
-                                                    />
-                                                </td>
-                                            )}
-                                        </tr>
-                                        <tr>
-                                            <td className='w-full md:w-[30%] border px-4 md:px-10'>
-                                                <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="fname">Father's Name</label>
-                                            </td>
-                                            {isfNameEditable ? (
-                                                <td className='w-full md:w-[40%] border px-4 md:px-10'>
-                                                    <input
-                                                        className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center'
-                                                        type="text"
-                                                        id="fname"
-                                                        ref={fname}
-                                                        value={data.fname}
-                                                        onChange={(e) => setData({ ...data, fname: e.target.value })}
-                                                        autoFocus={isfNameEditable}
-                                                    />
-                                                </td>
-                                            ) : (
-                                                <td className='w-full md:w-[40%] border px-4 md:px-10'>
-                                                    <input
-                                                        className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center'
-                                                        ref={fname}
-                                                        id="fname"
-                                                        type="text"
-                                                        value={data.fname}
-                                                        readOnly
-                                                    />
-                                                </td>
-                                            )}
-                                            {isfNameEditable ? (
-                                                <td className='w-full md:w-[30%] px-2 border'>
-                                                    <Check
-                                                        className='hover:bg-blue-400 bg-blue-500 rounded-lg size-8 text-white'
-                                                        style={{ padding: '4px' }}
-                                                        onClick={changefName}
-                                                    />
-                                                </td>
-                                            ) : (
-                                                <td className='w-full md:w-[30%] px-2 border'>
-                                                    <Edit2Icon
-                                                        className='hover:bg-blue-400 bg-blue-500  rounded-lg size-8 text-white'
-                                                        style={{ padding: '4px' }}
-                                                        onClick={changefName}
-                                                    />
-                                                </td>
-                                            )}
-                                        </tr>
-                                        <tr>
-                                            <td className='w-full md:w-[30%] border px-4 md:px-10'>
-                                                <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="fmob">Mobile</label>
-                                            </td>
-                                            <td className='w-full md:w-[40%] border px-4 md:px-10'>
-                                                <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={data.fmob} readOnly />
-                                            </td>
-                                            {/* You can add edit icon if required */}
-                                            <td className='w-full md:w-[30%] px-2 border'></td>
-                                        </tr>
-                                        {/* Add similar adjustments for other table rows */}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                    </div>
+                    <div className="w-full">
+                        <table className="w-full">
+                            <tbody>
+                                <tr>
+                                    <td className='w-full md:w-[30%] border px-4 md:px-10'>
+                                        <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="name">Name</label>
+                                    </td>
+                                    {isNameEditable ? (
+                                        <td className='w-full md:w-[40%] border px-4 md:px-10'>
+                                            <input
+                                                className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center'
+                                                id="name"
+                                                type="text"
+                                                ref={name}
+                                                value={data.name}
+                                                onChange={(e) => setData({ ...data, name: e.target.value })}
+                                            />
+                                        </td>
+                                    ) : (
+                                        <td className='w-full md:w-[40%] border px-4 md:px-10'>
+                                            <input
+                                                className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center'
+                                                ref={name}
+                                                id="name"
+                                                type="text"
+                                                value={data.name}
+                                                readOnly
+                                            />
+                                        </td>
+                                    )}
+                                    {isNameEditable ? (
+                                        <td className='w-full md:w-[30%] px-2 border'>
+                                            <Check
+                                                className='hover:bg-blue-400 bg-blue-500 rounded-lg size-8 text-white'
+                                                style={{ padding: '4px' }}
+                                                onClick={changeName}
+                                            />
+                                        </td>
+                                    ) : (
+                                        <td className='w-full md:w-[30%] px-2 border'>
+                                            <Edit2Icon
+                                                className='hover:bg-blue-400 bg-blue-500 rounded-lg size-8 text-white'
+                                                style={{ padding: '4px' }}
+                                                onClick={changeName}
+                                            />
+                                        </td>
+                                    )}
+                                </tr>
+                                <tr>
+                                    <td className='w-full md:w-[30%] border px-4 md:px-10'>
+                                        <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="fname">Father's Name</label>
+                                    </td>
+                                    {isfNameEditable ? (
+                                        <td className='w-full md:w-[40%] border px-4 md:px-10'>
+                                            <input
+                                                className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center'
+                                                type="text"
+                                                id="fname"
+                                                ref={fname}
+                                                value={data.fname}
+                                                onChange={(e) => setData({ ...data, fname: e.target.value })}
+                                                autoFocus={isfNameEditable}
+                                            />
+                                        </td>
+                                    ) : (
+                                        <td className='w-full md:w-[40%] border px-4 md:px-10'>
+                                            <input
+                                                className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center'
+                                                ref={fname}
+                                                id="fname"
+                                                type="text"
+                                                value={data.fname}
+                                                readOnly
+                                            />
+                                        </td>
+                                    )}
+                                    {isfNameEditable ? (
+                                        <td className='w-full md:w-[30%] px-2 border'>
+                                            <Check
+                                                className='hover:bg-blue-400 bg-blue-500 rounded-lg size-8 text-white'
+                                                style={{ padding: '4px' }}
+                                                onClick={changefName}
+                                            />
+                                        </td>
+                                    ) : (
+                                        <td className='w-full md:w-[30%] px-2 border'>
+                                            <Edit2Icon
+                                                className='hover:bg-blue-400 bg-blue-500  rounded-lg size-8 text-white'
+                                                style={{ padding: '4px' }}
+                                                onClick={changefName}
+                                            />
+                                        </td>
+                                    )}
+                                </tr>
+                                <tr>
+                                    <td className='w-full md:w-[30%] border px-4 md:px-10'>
+                                        <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="fmob">Mobile</label>
+                                    </td>
+                                    <td className='w-full md:w-[40%] border px-4 md:px-10'>
+                                        <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={data.fmob} readOnly />
+                                    </td>
+                                    {/* You can add edit icon if required */}
+                                    <td className='w-full md:w-[30%] px-2 border'></td>
+                                </tr>
+                                {/* Add similar adjustments for other table rows */}
+                            </tbody>
+                        </table>
+                    </div>
+                {/* </div> */}
 
                         {/* <h1 className='text-3xl flex text-center p-4'>
                             <FileAxis3D className=' rounded-lg size-10 text-black'
@@ -279,99 +276,100 @@ export default function Profile() {
                             />
                             General Information
                         </h1> */}
-                        <div className="w-full md:max-w-[700px] mb-auto mx-auto ">
-                            <h1 className='text-3xl flex justify-center items-center p-4'>
-                                <FileAxis3D className='rounded-lg size-10 text-black' style={{ padding: '4px' }} />
-                                General Information
-                            </h1>
-                            <div className="w-full md:max-w-[700px] mx-auto">
-                                <table className='w-full md:min-w-max '>
-                                    <tbody>
-                                        <tr>
-                                            <td className='w-full md:w-auto border px-4 md:px-10'>
-                                                <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="admno">Admission No.</label>
-                                            </td>
-                                            <td className='w-full md:w-auto border px-4 md:px-10'>
-                                                <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={data.admno} readOnly />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className='w-full md:w-auto border px-4 md:px-10'>
-                                                <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="class">Class</label>
-                                            </td>
-                                            <td className='w-full md:w-auto border px-4 md:px-10'>
-                                                <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={data.class} readOnly />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className='w-full md:w-auto border px-4 md:px-10'>
-                                                <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="section">Section</label>
-                                            </td>
-                                            <td className='w-full md:w-auto border px-4 md:px-10'>
-                                                <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={data.section} readOnly />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className='w-full md:w-auto border px-4 md:px-10'>
-                                                <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="roll">Roll</label>
-                                            </td>
-                                            <td className='w-full md:w-auto border px-4 md:px-10'>
-                                                <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={data.roll} readOnly />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className='w-full md:w-auto border px-4 md:px-10'>
-                                                <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="session">Session</label>
-                                            </td>
-                                            <td className='w-full md:w-auto border px-4 md:px-10'>
-                                                <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={data.session} readOnly />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className='w-full md:w-auto border px-4 md:px-10'>
-                                                <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="transport">Transport</label>
-                                            </td>
-                                            <td className='w-full md:w-auto border px-4 md:px-10'>
-                                                <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={data.transport} readOnly />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className='w-full md:w-auto border px-4 md:px-10'>
-                                                <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="transFee">Transport Fee</label>
-                                            </td>
-                                            <td className='w-full md:w-auto border px-4 md:px-10'>
-                                                <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={transFee} readOnly />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className='w-full md:w-auto border px-4 md:px-10'>
-                                                <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="dest">Destination</label>
-                                            </td>
-                                            <td className='w-full md:w-auto border px-4 md:px-10'>
-                                                <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={dest} readOnly />
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div className="w-full md:max-w-[700px] flex mb-4 justify-center items-center mx-auto">
-                            <NavLink to="/dashboard">
-                                <button
-                                    type="button"
-                                    className="mt-4 w-full p-4 md:w-auto md:max-w-[200px] lg:max-w-[300px] rounded-lg bg-blue-700 py-2 text-lg md:text-2xl font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                                >
-                                    Back to Dashboard
-                                </button>
-                            </NavLink>
-                        </div>
+            <div className="w-full md:max-w-[700px] mb-auto mx-auto ">
+                <h1 className='text-3xl flex justify-center items-center p-4'>
+                    <FileAxis3D className='rounded-lg size-10 text-black' style={{ padding: '4px' }} />
+                    General Information
+                </h1>
+                <div className="w-full md:max-w-[700px] mx-auto">
+                    <table className='w-full md:min-w-max '>
+                        <tbody>
+                            <tr>
+                                <td className='w-full md:w-auto border px-4 md:px-10'>
+                                    <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="admno">Admission No.</label>
+                                </td>
+                                <td className='w-full md:w-auto border px-4 md:px-10'>
+                                    <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={data.admno} readOnly />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className='w-full md:w-auto border px-4 md:px-10'>
+                                    <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="class">Class</label>
+                                </td>
+                                <td className='w-full md:w-auto border px-4 md:px-10'>
+                                    <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={data.class} readOnly />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className='w-full md:w-auto border px-4 md:px-10'>
+                                    <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="section">Section</label>
+                                </td>
+                                <td className='w-full md:w-auto border px-4 md:px-10'>
+                                    <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={data.section} readOnly />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className='w-full md:w-auto border px-4 md:px-10'>
+                                    <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="roll">Roll</label>
+                                </td>
+                                <td className='w-full md:w-auto border px-4 md:px-10'>
+                                    <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={data.roll} readOnly />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className='w-full md:w-auto border px-4 md:px-10'>
+                                    <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="session">Session</label>
+                                </td>
+                                <td className='w-full md:w-auto border px-4 md:px-10'>
+                                    <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={data.session} readOnly />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className='w-full md:w-auto border px-4 md:px-10'>
+                                    <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="transport">Transport</label>
+                                </td>
+                                <td className='w-full md:w-auto border px-4 md:px-10'>
+                                    <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={data.transport} readOnly />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className='w-full md:w-auto border px-4 md:px-10'>
+                                    <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="transFee">Transport Fee</label>
+                                </td>
+                                <td className='w-full md:w-auto border px-4 md:px-10'>
+                                    <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={transFee} readOnly />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className='w-full md:w-auto border px-4 md:px-10'>
+                                    <label className='bg-transparent py-2 mr-2 text-lg md:text-base' htmlFor="dest">Destination</label>
+                                </td>
+                                <td className='w-full md:w-auto border px-4 md:px-10'>
+                                    <input className='rounded-lg py-2 px-2 md:px-4 text-lg md:text-base text-center' type="text" value={dest} readOnly />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div className="w-full md:max-w-[700px] flex mb-4 justify-center items-center mx-auto">
+                <NavLink to="/dashboard">
+                    <button
+                        type="button"
+                        className="mt-4 w-full p-4 md:w-auto md:max-w-[200px] lg:max-w-[300px] rounded-lg bg-blue-700 py-2 text-lg md:text-2xl font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                    >
+                        Back to Dashboard
+                    </button>
+                </NavLink>
+            </div>
 
 
 
-                    </div>
-               </div>
-            )}
         </div>
+                // </div >
+            )
+}
+        </div >
 
     );
 
