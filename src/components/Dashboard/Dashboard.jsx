@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react'
-
+import './Dashboard.css'
 import { getAdmno, setAdmno } from '../../../global';
 
 
@@ -72,7 +72,7 @@ export default function Dashboard() {
                 </div>
             </div>
             ) : (
-                <div className="bg-slate-300 mx-auto mt-2 mb-auto rounded-md border md:w-3/4 lg:w-[700px]">
+                <div className=" mx-auto mt-2 mb-auto rounded-md border md:w-3/4 lg:w-[700px]">
                     <div className="bg-blue-500 flex justify-center items-center">
                         <img
                             src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJsb2d8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
@@ -82,7 +82,7 @@ export default function Dashboard() {
                     </div>
                     <h1 className="text-3xl p-4 text-center font-semibold">DASHBOARD</h1>
                     <div className="p-4">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 p-2 border-4 gap-4">
                             <div>
                                 <label className="block bg-transparent py-2 text-xl md:text-2xl">Name</label>
                                 <input className="input-field" type="text" value={data.name} readOnly />
@@ -111,6 +111,9 @@ export default function Dashboard() {
                                 <label className="block bg-transparent py-2 text-xl md:text-2xl">Section</label>
                                 <input className="input-field" type="text" value={data.section} readOnly />
                             </div>
+
+                        </div>
+                        <div>
                             <div className="flex justify-center items-center">
                                 <div>
                                     <NavLink to="/profile">
@@ -124,7 +127,9 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
-            )}
-        </div>
+                // </div>
+    )
+}
+        </div >
     )
 }
