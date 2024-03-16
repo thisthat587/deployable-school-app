@@ -14,7 +14,7 @@ const ProfilePhotoInput = () => {
                 setImageSrc(e.target.result);
             };
 
-            reader.readAsDataURL(file);
+            reader.readAsDataURL(file)
             console.log(file);
         }
     };
